@@ -1,0 +1,49 @@
+{
+  "name": "daily-task-planner",
+  "version": "1.0.0",
+  "description": "A premium daily task planner",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "keywords": [],
+  "author": "Antigravity",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.2.0",
+    "@electron-forge/maker-squirrel": "^7.2.0",
+    "@electron-forge/maker-zip": "^7.2.0",
+    "electron": "^28.1.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "daily_task_planner",
+            "authors": "Antigravity",
+            "exe": "daily-task-planner.exe",
+            "setupExe": "DailyTaskPlannerSetup.exe",
+            "setupMsi": "DailyTaskPlannerSetup.msi",
+            "createDesktopShortcut": true,
+            "createStartMenuShortcut": true
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin",
+            "linux"
+          ]
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
+  }
+}
