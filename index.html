@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Task Planner</title>
+    <meta name="description" content="A premium daily task planner with calendar and custom lists.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>Planner</h2>
+            </div>
+
+            <nav class="nav-links">
+                <div class="nav-section">
+                    <h3>Menu</h3>
+                    <ul>
+                        <li class="nav-item active" data-view="tasks" data-list-id="today">
+                            <span class="icon">📅</span> Today
+                        </li>
+                        <li class="nav-item" data-view="calendar">
+                            <span class="icon">📆</span> Calendar
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <div class="section-header">
+                        <h3>My Lists</h3>
+                        <button id="add-list-btn" class="icon-btn" title="Create List">+</button>
+                    </div>
+                    <ul id="custom-lists-nav">
+                        <!-- Custom lists injected here -->
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Tasks View -->
+            <div id="tasks-view" class="view-section active">
+                <header class="view-header">
+                    <div>
+                        <h1 id="list-title">Today</h1>
+                        <p class="subtitle" id="current-date">Wed, Oct 24</p>
+                    </div>
+                    <button id="delete-list-btn" class="text-danger hidden">Delete List</button>
+                </header>
+
+                <section class="input-section">
+                    <form id="task-form">
+                        <div class="input-row">
+                            <input type="text" id="task-input" placeholder="Add a new task..." autocomplete="off">
+                            <select id="priority-select">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                            <button type="submit" id="add-task-btn">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="tasks-list-container">
+                    <ul id="task-list" class="task-list">
+                        <!-- Tasks go here -->
+                    </ul>
+                    <div id="empty-state" class="empty-state hidden">
+                        <p>No tasks yet. Make it happen!</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Calendar View -->
+            <div id="calendar-view" class="view-section">
+                <header class="view-header">
+                    <h1>Calendar</h1>
+                    <div class="calendar-controls">
+                        <button id="prev-month">&lt;</button>
+                        <span id="calendar-month-year">October 2026</span>
+                        <button id="next-month">&gt;</button>
+                    </div>
+                </header>
+
+                <div class="calendar-grid-header">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div id="calendar-grid" class="calendar-grid">
+                    <!-- Days injected here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <dialog id="new-list-modal" class="modal">
+        <form method="dialog">
+            <h3>New List</h3>
+            <input type="text" id="new-list-name" placeholder="List Name (e.g. Shopping)" required>
+            <div class="modal-actions">
+                <button type="button" id="cancel-list-btn">Cancel</button>
+                <button type="submit" id="confirm-list-btn" class="primary">Create</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="event-modal" class="modal">
+        <form method="dialog">
+            <h3>Add Event</h3>
+            <p id="event-date-display" class="subtitle"></p>
+            <input type="text" id="event-title" placeholder="Event Title" required>
+            <div class="modal-actions">
+                <button type="button" id="cancel-event-btn">Cancel</button>
+                <button type="submit" id="confirm-event-btn" class="primary">Add Event</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
